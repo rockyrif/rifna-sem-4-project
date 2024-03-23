@@ -69,7 +69,7 @@ if (isset ($_POST["submit"])) {
     </div>
 
     <?php
-    $sql = "SELECT * FROM `members` WHERE member_id = $id LIMIT 1";
+    $sql = "SELECT * FROM `ati-store` WHERE member_id = $id LIMIT 1";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     ?>
@@ -123,18 +123,7 @@ if (isset ($_POST["submit"])) {
         </div>
 
 
-        <div class="form-group mb-3">
-          <label>Gender:</label>
-          &nbsp;
-          <input type="radio" class="form-check-input" name="gender" id="male" value="male" <?php echo ($row["gender"] == 'male') ? "checked" : ""; ?>>
-          <label for="gender" class="form-input-label">Male</label>
-          &nbsp;
-          <input type="radio" class="form-check-input" name="gender" id="female" value="female" <?php echo ($row["gender"] == 'female') ? "checked" : ""; ?>>
-          <label for="gender" class="form-input-label">Female</label>
-          &nbsp;
-          <input type="radio" class="form-check-input" name="gender" id="transgender" value="trans" <?php echo ($row["gender"] == 'trans') ? "checked" : ""; ?>>
-          <label for="gender" class="form-input-label">Transgender</label>
-        </div>
+        
 
         <div class=" mb-3">
           <button type="submit" class="btn btn-success" name="submit">Update</button>

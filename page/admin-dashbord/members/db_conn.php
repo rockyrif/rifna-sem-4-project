@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "MNAM14059320alocalhost";
-$dbname = "amp_dtc";
+$dbname = "ati_store";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);

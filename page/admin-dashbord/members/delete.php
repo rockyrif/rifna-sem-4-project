@@ -1,7 +1,7 @@
 <?php
 include "db_conn.php";
 $id = $_GET["id"];
-$sql = "DELETE FROM `members` WHERE member_id = $id";
+$sql = "DELETE FROM `ati-store` WHERE item_id = $id";
 $result = mysqli_query($conn, $sql);
 
 if ($result) {

@@ -11,12 +11,10 @@ if (isset ($_POST["submit"])) {
    $electonic_status = $_POST['electonic_status'];
    $purchase_date = $_POST['purchase_date'];
    $in_store_status = $_POST['in_store_status'];
-   $member_type = $_POST['member_type'];
-   $occupation = $_POST['occupation'];
-   $school = $_POST['school'];
-   $gender = $_POST['gender'];
+   $handler = $_POST['handler'];
+  
 
-   $sql = "INSERT INTO `ati-store`(`member_id`, `first_name`, `last_name`, `email`, `phone1`,`phone2`, `date_of_birth`, `address`, `member_type`, `occupation`, `school`, `gender`) VALUES ('','$first_name','$last_name','$email','$phone1','$phone2','$dob','$address','$member_type','$occupation','$school','$gender')";
+   $sql = "INSERT INTO `ati-store`(`item_id`, `item_name`, `quantity`, `status`, `electonic_status`,`purchase_date`, `in_store_status`, `handler`) VALUES ('','$item_name','$quantity','$status','$electonic_status','$purchase_date','$in_store_status','$handler')";
 
    $result = mysqli_query($conn, $sql);
 
@@ -54,7 +52,7 @@ if (isset ($_POST["submit"])) {
       rel="stylesheet">
    <!-- online fonts end -->
 
-   <title>ADTC add</title>
+   <title>Item add</title>
 </head>
 
 <body style="background-color:">
@@ -64,93 +62,52 @@ if (isset ($_POST["submit"])) {
 
    <div class="container" style="margin-top:93px;">
       <div class="text-center mb-4">
-         <h3>Add New member</h3>
-         <p class="text-muted">Complete the form below to add a new member</p>
+         <h3>Add New item</h3>
+         <p class="text-muted">Complete the form below to add a new item</p>
       </div>
 
       <div class="container d-flex justify-content-center">
          <form action="" method="post" style="width:50vw; min-width:300px;">
-            <div class="row mb-3">
-               <div class="col">
-                  <label class="form-label">First Name:</label>
-                  <input type="text" class="form-control" name="first_name" placeholder="Albert" required>
+           
+               <div class="col mb-3">
+                  <label class="form-label">Item Name:</label>
+                  <input type="text" class="form-control" name="item_name" placeholder="Hammer" required>
                </div>
 
-               <div class="col">
-                  <label class="form-label">Last Name:</label>
-                  <input type="text" class="form-control" name="last_name" placeholder="Einstein" required>
-               </div>
+            <div class="mb-3">
+               <label class="form-label">Quantity:</label>
+               <input type="text" class="form-control" name="quantity" placeholder="01">
             </div>
 
             <div class="mb-3">
-               <label class="form-label">Email:</label>
-               <input type="email" class="form-control" name="email" placeholder="name@example.com">
+               <label class="form-label">Working status:</label>
+               <input type="text" class="form-control" name="status" placeholder="Working/Repaired">
+      
             </div>
 
             <div class="mb-3">
-               <label class="form-label">Phone:</label>
-               <input type="text" class="form-control" name="phone1" placeholder="0789642231"><br>
-               <input type="text" class="form-control" name="phone2" placeholder="0789642231">
+               <label class="form-label">Electronic status:</label>
+               <input type="text" class="form-control" name="electonic_status" placeholder="Electronic/Non electronic">
             </div>
 
             <div class="mb-3">
-               <label class="form-label">Date of birth:</label>
-               <input type="date" class="form-control" name="dob" placeholder="1999-06-22">
+               <label class="form-label">Purchase date:</label>
+               <input type="date" class="form-control" name="purchase_date" placeholder="1999-06-22">
             </div>
 
-            <div class="mb-3">
-               <label class="form-label">Address:</label>
-               <input type="text" class="form-control" name="address" placeholder="no 3 sahivu road kalmunai-4">
-            </div>
+           
 
             <div class="mb-3">
-               <label class="form-label" for="member_type">Member type</label>
-               <select class="form-select" name="member_type" id="member_type">
-                  <option value="adult" selected>Adult</option>
-                  <option value="child">Child</option>
+               <label class="form-label" for="in_store_status">In store status</label>
+               <select class="form-select" name="in_store_status" id="member_type">
+                  <option value="In-the-store" selected>In the store</option>
+                  <option value="out-of-the-store">out of the store</option>
                </select>
             </div>
 
             <div id="occupationInput" class="mb-3">
-               <label class="form-label" for="occupation">Occupation</label>
-               <input type="text" class="form-control" name="occupation" id="occupation">
-            </div>
-
-            <div id="schoolInput" class="mb-3" style="display: none;">
-               <label class="form-label" for="school">School</label>
-               <input type="text" class="form-control" name="school" id="school">
-            </div>
-
-            <!-- script to change dynamic form based on member type -->
-            <script>
-               const memberTypeSelect = document.getElementById('member_type');
-               const occupationInput = document.getElementById('occupationInput');
-               const schoolInput = document.getElementById('schoolInput');
-
-               memberTypeSelect.addEventListener('change', function () {
-                  if (memberTypeSelect.value === 'adult') {
-                     occupationInput.style.display = 'block';
-                     schoolInput.style.display = 'none';
-                  } else if (memberTypeSelect.value === 'child') {
-                     occupationInput.style.display = 'none';
-                     schoolInput.style.display = 'block';
-                  }
-               });
-            </script>
-            <!-- script to change dynamic form based on member type -->
-
-
-
-            <div class="form-group mb-3">
-               <label>Gender:</label>
-               &nbsp;
-               <input type="radio" class="form-check-input" name="gender" id="male" value="male">
-               <label for="gender" class="form-input-label">Male</label>
-               &nbsp;
-               <input type="radio" class="form-check-input" name="gender" id="female" value="female">
-               <label for="gender" class="form-input-label">Female</label>
-               &nbsp;
-      
+               <label class="form-label" for="occupation">Handler:</label>
+               <input type="text" class="form-control" name="handler" id="occupation">
             </div>
 
             <div class="mb-3">

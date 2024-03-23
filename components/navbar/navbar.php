@@ -116,7 +116,7 @@
                 <a href="" class="navbar-brand fs-4">
                     <img src="/rifna-sem-4-project/Images/logo.png" alt="Tennis court logo" width="70">
                     <span class="container responsive-brand-item">
-                        Ampara<span class="brand-br"><span class="tennis"> Hardy</span> ATI</span>
+                        Store management<span class="brand-br"><span class="tennis"> Hardy</span> ATI</span>
                     </span>
                 </a>
 
@@ -128,7 +128,7 @@
                         <a href="/project-holders-project-2/page/AboutUs-page/About-us.php"
                             class="nav-link nav-link-about">ABOUT ATI</a>
                     </div>
-                    
+
 
                     <?php if (!isset ($_SESSION['username'])): ?>
                         <div class="nav-item-outer">
@@ -169,7 +169,7 @@
                             </div>
                         <?php endif; ?>
 
-                    
+
 
                         <ul class="navbar-nav justify-content-end flex-grow-1">
 
@@ -216,7 +216,7 @@
         </nav>
     </div>
 
-
+<script src="/rifna-sem-4-project/components/navbar/navbar.js"></script>
 
     <!-- Navbar end -->
 </body>
