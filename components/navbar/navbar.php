@@ -126,7 +126,7 @@
 
                 <div class="navbar-nav-outer ">
                     <div class="nav-item-outer ">
-                        <a href="../../page/admin-dashbord/table/admin-dashbord.php" class="nav-link nav-link-home active">HOME</a>
+                        <a href="/rifna-sem-4-project/page/admin-dashbord/table/admin-dashbord.php" class="nav-link nav-link-home active">HOME</a>
                     </div>
                     <div class="nav-item-outer">
                         <a href="/rifna-sem-4-project/page/AboutUs-page/About-us.php"
