@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "MNAM14059320alocalhost";
+$password = "";
 $dbname = "ati_store";
 
 // Create connection

@@ -36,6 +36,10 @@
             color: #91CC00;
         }
 
+        .hardy{
+            color: #91CC00;
+        }
+
         .nav-link-contact {
             color: #000066;
         }
@@ -116,28 +120,28 @@
                 <a href="" class="navbar-brand fs-4">
                     <img src="/rifna-sem-4-project/Images/logo.png" alt="" width="70">
                     <span class="container responsive-brand-item">
-                        Store management<span class="brand-br"><span class=""> Hardy</span> ATI</span>
+                        Store management<span class="brand-br"><span class="hardy"> Hardy</span> ATI</span>
                     </span>
                 </a>
 
                 <div class="navbar-nav-outer ">
                     <div class="nav-item-outer ">
-                        <a href="#" class="nav-link nav-link-home active">HOME</a>
+                        <a href="../../page/admin-dashbord/table/admin-dashbord.php" class="nav-link nav-link-home active">HOME</a>
                     </div>
                     <div class="nav-item-outer">
-                        <a href="#"
+                        <a href="/rifna-sem-4-project/page/AboutUs-page/About-us.php"
                             class="nav-link nav-link-about">ABOUT ATI</a>
                     </div>
 
 
                     <?php if (!isset ($_SESSION['username'])): ?>
                         <div class="nav-item-outer">
-                            <a href="#"
+                            <a href="/rifna-sem-4-project/page/login-and-signup-page/index.php"
                                 class="nav-link nav-link-login">SIGN IN</a>
                         </div>
                         <div class="nav-item-outer">
                             <button type="button" class="btn btn-success outer-button"
-                                onclick="window.location.href='#'">SIGN
+                                onclick="window.location.href='/rifna-sem-4-project/page/login-and-signup-page/index.php'">SIGN
                                 UP</button>
                         </div>
                     <?php endif; ?>
@@ -174,27 +178,27 @@
                         <ul class="navbar-nav justify-content-end flex-grow-1">
 
                            
+                        <?php if (isset($_SESSION["username"]) && $_SESSION["privilage"] === "admin") : ?>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         ADMIN DASHBORD
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item"
-                                                href="#">Edit
-                                                items</a></li>
+                                        <li><a class="dropdown-item" href="/rifna-sem-4-project/page/admin-manager/admin-manager.php">Admin manager</a></li>
+                                        
 
                                     </ul>
 
                                 </li>
+                            <?php endif; ?>
                             
 
                             <li class="nav-item ">
-                                <a href=""
+                                <a href="/rifna-sem-4-project/page/admin-dashbord/table/admin-dashbord.php"
                                     class="nav-link nav-link-home active">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#"
+                                <a href="/rifna-sem-4-project/page/AboutUs-page/About-us.php"
                                     class="nav-link nav-link-about">ABOUT
                                     ATI</a>
                             </li>
@@ -202,7 +206,7 @@
                             <?php if (isset ($_SESSION['username'])): ?>
                                 <li class="nav-item ">
                                     <button type="button" class="btn btn-danger offcanvas-button"
-                                        onclick="window.location.href='/project-holders-project-2/page/login-and-signup-page/log-out.php'">LOG
+                                        onclick="window.location.href='/rifna-sem-4-project/page/login-and-signup-page/log-out.php'">LOG
                                         OUT</button>
                                 </li>
                             <?php endif; ?>
@@ -214,6 +218,28 @@
                 </div>
             </div>
         </nav>
+           <!-- Aleart start -->
+           <?php
+        if (isset($_SESSION['response'])) {
+            echo '<div id="alertContainer" class="alert alert-warning container alert-dismissible fade show" role="alert">
+            ' . $_SESSION['response'] . '
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>';
+
+            unset($_SESSION['response']);
+        }
+        ?>
+        <script>
+            // Automatically remove the alert after 4 seconds
+            setTimeout(function() {
+                var alertContainer = document.getElementById('alertContainer');
+                if (alertContainer) {
+                    alertContainer.remove();
+                }
+            }, 4000);
+        </script>
+
+        <!-- Aleart end -->
     </div>
 
 <script src="/rifna-sem-4-project/components/navbar/navbar.js"></script>

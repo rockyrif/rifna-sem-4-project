@@ -4,7 +4,7 @@ session_start();
 <?php
 include "db_conn.php";
 
-if (isset ($_POST["submit"])) {
+if (isset($_POST["submit"])) {
    $item_name = $_POST['item_name'];
    $quantity = $_POST['quantity'];
    $status = $_POST['status'];
@@ -12,7 +12,7 @@ if (isset ($_POST["submit"])) {
    $purchase_date = $_POST['purchase_date'];
    $in_store_status = $_POST['in_store_status'];
    $handler = $_POST['handler'];
-  
+
 
    $sql = "INSERT INTO `ati-store`(`item_id`, `item_name`, `quantity`, `status`, `electonic_status`,`purchase_date`, `in_store_status`, `handler`) VALUES ('','$item_name','$quantity','$status','$electonic_status','$purchase_date','$in_store_status','$handler')";
 
@@ -39,23 +39,19 @@ if (isset ($_POST["submit"])) {
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    <!-- Bootstrap -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
    <!-- Font Awesome -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
    <!-- online fonts start -->
-   <link href="https://db.onlinewebfonts.com/c/1f182a2cd2b60d5a6ac9667a629fbaae?family=PF+Din+Stencil+W01+Bold"
-      rel="stylesheet">
+   <link href="https://db.onlinewebfonts.com/c/1f182a2cd2b60d5a6ac9667a629fbaae?family=PF+Din+Stencil+W01+Bold" rel="stylesheet">
    <!-- online fonts end -->
 
    <title>Item add</title>
 </head>
 
-<body style="background-color:">
+<body>
    <?php
    include '../../../components/navbar/navbar.php';
    ?>
@@ -68,11 +64,11 @@ if (isset ($_POST["submit"])) {
 
       <div class="container d-flex justify-content-center">
          <form action="" method="post" style="width:50vw; min-width:300px;">
-           
-               <div class="col mb-3">
-                  <label class="form-label">Item Name:</label>
-                  <input type="text" class="form-control" name="item_name" placeholder="Hammer" required>
-               </div>
+
+            <div class="col mb-3">
+               <label class="form-label">Item Name:</label>
+               <input type="text" class="form-control" name="item_name" placeholder="Hammer" required>
+            </div>
 
             <div class="mb-3">
                <label class="form-label">Quantity:</label>
@@ -82,7 +78,7 @@ if (isset ($_POST["submit"])) {
             <div class="mb-3">
                <label class="form-label">Working status:</label>
                <input type="text" class="form-control" name="status" placeholder="Working/Repaired">
-      
+
             </div>
 
             <div class="mb-3">
@@ -95,7 +91,7 @@ if (isset ($_POST["submit"])) {
                <input type="date" class="form-control" name="purchase_date" placeholder="1999-06-22">
             </div>
 
-           
+
 
             <div class="mb-3">
                <label class="form-label" for="in_store_status">In store status</label>
@@ -119,9 +115,7 @@ if (isset ($_POST["submit"])) {
    </div>
 
    <!-- Bootstrap -->
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </body>
 

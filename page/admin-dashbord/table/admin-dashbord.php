@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (!$_SESSION["loggedin"] === true) {
+    header("location:../../login-and-signup-page/index.php");
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +25,7 @@ session_start();
     <!-- bootstrap end -->
 
     <!-- online fonts start -->
-    <link href="https://db.onlinewebfonts.com/c/1f182a2cd2b60d5a6ac9667a629fbaae?family=PF+Din+Stencil+W01+Bold"
-        rel="stylesheet">
+    <link href="https://db.onlinewebfonts.com/c/1f182a2cd2b60d5a6ac9667a629fbaae?family=PF+Din+Stencil+W01+Bold" rel="stylesheet">
     <!-- online fonts end -->
 
     <!-- Goolge fonts start -->
@@ -35,9 +39,7 @@ session_start();
     <!-- AOS  end-->
 
     <!-- Font Awesome start-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Font Awesome end-->
 
 
@@ -71,8 +73,9 @@ session_start();
             </script>
             <!-- AOS script end-->
 
+            <!-- Notification start -->
             <?php
-            if (isset ($_GET["msg"])) {
+            if (isset($_GET["msg"])) {
                 $msg = $_GET["msg"];
                 echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
                     ' . $msg . '
@@ -80,6 +83,7 @@ session_start();
                     </div>';
             }
             ?>
+            <!-- Notification end -->
 
             <!-- filtering ui start -->
             <div class="row mb-2 mt-1 filter-section">
@@ -93,15 +97,11 @@ session_start();
                             <form action="admin-dashbord.php" method="GET">
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
-                                        <input type="text" name="item-id"
-                                            value="<?= isset ($_GET['item-id']) ? $_GET['item-id'] : ''; ?>"
-                                            class="form-control" placeholder="item id">
+                                        <input type="text" name="item-id" value="<?= isset($_GET['item-id']) ? $_GET['item-id'] : ''; ?>" class="form-control" placeholder="item id">
                                     </div>
 
                                     <div class="col-md-3 mb-3">
-                                        <input type="text" name="item-name"
-                                            value="<?= isset ($_GET['item-name']) ? $_GET['item-name'] : '' ?>"
-                                            class="form-control" placeholder="Name">
+                                        <input type="text" name="item-name" value="<?= isset($_GET['item-name']) ? $_GET['item-name'] : '' ?>" class="form-control" placeholder="Name">
                                     </div>
 
                                     <div class="col-md-6 mb-2">
@@ -121,9 +121,10 @@ session_start();
 
 
 
-
+            <!-- Table start -->
             <div class="container-2">
                 <table class="table table-hover text-center ">
+                    <!-- Table Heading start -->
                     <thead class="table-dark">
                         <tr>
                             <th scope="col">Item ID</th>
@@ -134,34 +135,34 @@ session_start();
                             <th scope="col">Purchase date</th>
                             <th scope="col">In store status</th>
                             <th scope="col">Handler</th>
-
                             <th scope="col" class="col-remove">Edit</th>
                             <th scope="col" class="col-remove">Delete</th>
                         </tr>
                     </thead>
+                    <!-- Table Heading End -->
 
                     <!-- php filtering start -->
                     <?php
-                    if (isset ($_GET['item-id']) || isset ($_GET['item-name'])) {
-                        ?>
+                    if (isset($_GET['item-id']) || isset($_GET['item-name'])) {
+                    ?>
                         <tbody>
                             <?php
                             // Include database connection
-                        
+
 
                             // Initialize an empty array to store conditions
                             $conditions = array();
 
                             // Check each form field for data and construct conditions accordingly
-                            if (!empty ($_GET['item-id'])) {
+                            if (!empty($_GET['item-id'])) {
                                 $conditions[] = "item_id = {$_GET['item-id']}";
                             }
 
-                            if (!empty ($_GET['item-name'])) {
+                            if (!empty($_GET['item-name'])) {
                                 $conditions[] = "(item_name LIKE '%{$_GET['item-name']}%')";
                             }
 
-                            
+
 
                             include "db_conn.php";
 
@@ -169,7 +170,7 @@ session_start();
                             $sql = "SELECT * FROM `ati-store`";
 
                             // Add WHERE clause if conditions are provided
-                            if (!empty ($conditions)) {
+                            if (!empty($conditions)) {
                                 $sql = $sql . " WHERE " . implode(" AND ", $conditions);
                             }
 
@@ -181,11 +182,11 @@ session_start();
                             // Check if query executed successfully
                             if ($result && mysqli_num_rows($result) > 0) {
                                 // Display table header
-                        
+
 
                                 // Fetch and display data
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    ?>
+                            ?>
                                     <tr>
                                         <td>
                                             <?php echo $row["item_id"]; ?>
@@ -212,12 +213,10 @@ session_start();
                                             <?php echo $row["handler"]; ?>
                                         </td>
 
-                                        <td class="col-remove"><a href="edit.php?id=<?php echo $row["item_id"]; ?>"
-                                                class="link-dark"><i class="fa-solid fa-pen-to-square fs-5"></i></a></td>
-                                        <td class="col-remove"><a href="delete.php?id=<?php echo $row["item_id"]; ?>"
-                                                class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a></td>
+                                        <td class="col-remove"><a href="edit.php?id=<?php echo $row["item_id"]; ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5"></i></a></td>
+                                        <td class="col-remove"><a href="delete.php?id=<?php echo $row["item_id"]; ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a></td>
                                     </tr>
-                                    <?php
+                                <?php
                                 }
                             } else {
                                 ?>
@@ -227,13 +226,13 @@ session_start();
                                         <?php echo 'No records found' ?>
                                     </td>
                                 </tr>
-                                <?php
+                            <?php
                             }
                             ?>
                         </tbody>
 
                         <!-- php filtering end -->
-                        <?php
+                    <?php
 
                     } else { ?>
 
@@ -245,7 +244,7 @@ session_start();
                             $result = mysqli_query($conn, $sql);
                             mysqli_close($conn);
                             while ($row = mysqli_fetch_assoc($result)) {
-                                ?>
+                            ?>
                                 <tr>
 
                                     <td>
@@ -275,23 +274,22 @@ session_start();
 
 
                                     <td>
-                                        <a href="edit.php?id=<?php echo $row["item_id"] ?>" class="link-dark"><i
-                                                class="fa-solid fa-pen-to-square fs-5 "></i></a>
+                                        <a href="edit.php?id=<?php echo $row["item_id"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 "></i></a>
                                     </td>
                                     <td>
-                                        <a href="delete.php?id=<?php echo $row["item_id"] ?>" class="link-dark"><i
-                                                class="fa-solid fa-trash fs-5"></i></a>
+                                        <a href="delete.php?id=<?php echo $row["item_id"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
                                     </td>
 
                                 </tr>
 
-                                <?php
+                            <?php
                             }
                             ?>
                         </tbody>
                         <!-- php database end -->
                     <?php } ?>
                 </table>
+                <!-- Table end -->
             </div>
 
 
@@ -303,9 +301,7 @@ session_start();
 
 
         <!-- Bootstrap -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
     </div>
 
