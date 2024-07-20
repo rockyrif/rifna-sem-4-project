@@ -449,7 +449,7 @@ session_start();
                                             <td><?php echo $row["username"] ?></td>
                                             <td><?php echo $row["email"] ?></td>
                                             <td>
-                                                <!-- Form to update payment status -->
+                                                <!-- Form to update user status -->
                                                 <form method="post">
                                                     <!-- Hidden input field for fee_id -->
                                                     <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">

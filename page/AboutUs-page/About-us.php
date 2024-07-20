@@ -60,7 +60,7 @@ session_start();
 
             <div class="gallary-info">
                 <div class="gallary-tittle">
-                    <div class="">About Hardy</div>
+                    <div class="">Hardy Ati</div>
                 </div>
                 <p data-aos="fade-up" data-aos-duration="2000">
                 Hardy, located in the Ampara District of Sri Lanka, is renowned for its educational institution, the Hardy Advanced Technological Institute. Named after Prof. Hardy, a visionary British engineer, the institute is a key center for technical and vocational education in the region, offering a range of courses in engineering, technology, and business. Nestled in the picturesque eastern part of the island, Hardy is surrounded by lush greenery and agricultural landscapes, reflecting the district's agrarian roots. The area is also notable for its cultural diversity, with a harmonious blend of Sinhalese, Tamil, and Muslim communities, contributing to a rich tapestry of traditions and local customs. This educational hub not only plays a pivotal role in the local economy but also in fostering social cohesion and regional development through its contributions to education and skill development.

@@ -110,6 +110,7 @@ if (isset($_POST["submit"])) {
                <button type="submit" class="btn btn-success" name="submit">Save</button>
                <a href="admin-dashbord.php" class="btn btn-danger ">Cancel</a>
             </div>
+   
          </form>
       </div>
    </div>

@@ -62,7 +62,7 @@ if (!$_SESSION["loggedin"] === true) {
         <div class="admin-dashbord container">
 
             <div class="admin-dashbord-tittle">
-                <P class="" data-aos="fade-up" data-aos-duration="2000">Item List</P>
+                <P class="" data-aos="fade-up" data-aos-duration="2000">Item list</P>
 
             </div>
 
